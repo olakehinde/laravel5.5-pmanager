@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->longText('description');
+            $table->integer('days')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('company_id')->unsigned();
 
