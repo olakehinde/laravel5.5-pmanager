@@ -48,7 +48,8 @@ class CompaniesController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        $company = Company::find($company->id); 
+        return view('companies.show', ['company' => $company]);
     }
 
     /**
@@ -59,7 +60,8 @@ class CompaniesController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        $company = Company::find($company->id);
+        return view('companies.edit', ['company' => $company]);
     }
 
     /**
@@ -71,7 +73,15 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $updateCompany = Company::find($company->id)->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description')
+        ]);
+
+        if ($updateCompany) {
+            return redirect->route('companies.show', ['company' => $company->id])->with('sucess', 'Company update Successfully');
+        }
+        return back()->WithInput();
     }
 
     /**
