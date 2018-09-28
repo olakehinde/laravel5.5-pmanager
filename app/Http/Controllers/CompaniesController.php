@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompaniesController extends Controller
 {
@@ -26,7 +27,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -37,7 +38,20 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Auth::check()) {
+            $company = Company::create([
+                'name' => $request->input('name'),
+                'description' => $request->input('description'),
+                'user_id' => Auth::user()->id
+            ]);
+
+            if ($company) {
+                return redirect()->route('companies.show', ['company' => $company->id])->with('success', 'Company created Successfully');
+            }
+            return back()->WithInput()->with('errors', 'Sorry, Company cannot be created. Try again');
+        }
+
+        return back()->WithInput()->with('errors', 'Sorry, you do not have Permission to create a Company. Please Login to create company');
     }
 
     /**
@@ -79,7 +93,7 @@ class CompaniesController extends Controller
         ]);
 
         if ($updateCompany) {
-            return redirect->route('companies.show', ['company' => $company->id])->with('sucess', 'Company update Successfully');
+            return redirect()->route('companies.show', ['company' => $company->id])->with('success', 'Company updated Successfully');
         }
         return back()->WithInput();
     }
@@ -92,6 +106,13 @@ class CompaniesController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $findCompany = Company::find($company->id);
+
+        if ($findCompany->delete()) {
+            return redirect()->route('companies.index')
+                             ->with('success', 'Company deleted Successfully');
+        }
+
+        return back()->WithInput()->with('error', 'Company cannot be deleted');
     }
 }
