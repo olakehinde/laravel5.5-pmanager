@@ -45,7 +45,7 @@
 
 
 
-				<form id="delete-form" action="{{ route('companies.destroy',['company' => $company->id]) }}" method="post" style="display: none;">
+				<form id="delete-form" action="{{ route('companies.destroy', ['company' => $company->id]) }}" method="post" style="display: none;">
 					<input type="hidden" name="_method" value="delete">
 					{{ csrf_field() }}
 				</form>
