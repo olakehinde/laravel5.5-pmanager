@@ -9,6 +9,7 @@
 		</div>
 
 		<div class="row" style="background-color: white; margin: 3px;">
+			<a href="/projects/create" class="btn btn-success btn-sm pull-right">Create New</a>
 			@foreach($company->projects as $project)
 			<div class="col-lg-4">
 				<h2>{{ $project->name }}</h2>
