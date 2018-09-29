@@ -5,11 +5,10 @@
 		<div class="jumbotron">
 			<h1>{{$company->name}}</h1>
 			<p class="lead">{{$company->description}}</p>
-			<!-- <p><a class="btn btn-lg btn-success" href="#" role="button">view details</a></p> -->
 		</div>
 
 		<div class="row" style="background-color: white; margin: 3px;">
-			<a href="/projects/create" class="btn btn-success btn-sm pull-right">Create New</a>
+			<a href="/projects/create/{{$company->id}}" class="btn btn-success btn-sm pull-right">Create Project</a>
 			@foreach($company->projects as $project)
 			<div class="col-lg-4">
 				<h2>{{ $project->name }}</h2>
@@ -41,7 +40,7 @@
 					</a>
 				</li>
 
-				<li style="padding-bottom: 3px"><a href="/projects/create" class="btn btn-success">Add new Project</a></li>
+				<li style="padding-bottom: 3px"><a href="/projects/create/{{ $company->id }}" class="btn btn-success">Add new Project</a></li>
 				<li style="padding-bottom: 3px"><a href="/companies/create" class="btn btn-success">Add new Company</a></li>
 
 
@@ -54,31 +53,5 @@
 				<!-- <li style="padding-bottom: 3px"><a href="#" class="btn btn-success">Add new Member</a></li> -->
 			</ol>
 		</div>
-
-		<!-- <div class="sidebar-module">
-			<h4>Members</h4>
-			<ol class="list-unstyled">
-				<li><a href="#">January 2018</a></li>
-				<li><a href="#">February 2018</a></li>
-				<li><a href="#">March 2018</a></li>
-				<li><a href="#">April 2018</a></li>
-				<li><a href="#">May 2018</a></li>
-				<li><a href="#">June 2018</a></li>
-				<li><a href="#">July 2018</a></li>
-				<li><a href="#">August 2018</a></li>
-				<li><a href="#">September 2018</a></li>
-				<li><a href="#">October 2018</a></li>
-				<li><a href="#">November 2018</a></li>
-				<li><a href="#">December 2018</a></li>
-			</ol>
-		</div>
-		<div class="sidebar-module">
-			<h4>Social Media</h4>
-			<ol class="list-unstyled">
-				<li><a href="#">Facebook</a></li>
-				<li><a href="#">Twitter</a></li>
-				<li><a href="#">Instagram</a></li>
-			</ol>
-		</div> -->
 	</div>
 @endsection
