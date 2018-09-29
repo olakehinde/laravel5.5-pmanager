@@ -29,15 +29,15 @@ class User extends Model
     	return $this->belongsTo('App\Models\Role');
     }
 
-    public function comments() {
-    	return $this->hasMany('App\Models\Comment');
-    }
-
     public function companies() {
     	return $this->hasMany('App\Models\Company');
     }
 
     public function projects() {
     	return $this->belongsToMany('App\Models\Project');
+    }
+
+    public function comments() {
+        return $this->morphMany('App\Models\Comment', 'commentable');
     }
 }
