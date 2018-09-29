@@ -18,13 +18,13 @@
 
 					<h1>Comment</h1>
 
-					<input type="hidden" name="commentable" value="Project" >
+					<input type="hidden" name="commentable_type" value="Project" >
 					<input type="hidden" name="commentable_id" value="{{$project->id}}" >
 
 					<div class="form-group">
 						<label for="comment-body">Comment</span></label>
 						<textarea
-							name="comment"
+							name="body"
 							id="comment-body"
 							rows="3"
 							spellcheck="false"
