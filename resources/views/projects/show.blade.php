@@ -8,8 +8,54 @@
 			<!-- <p><a class="btn btn-lg btn-success" href="#" role="button">view details</a></p> -->
 		</div>
 
-		<div class="row" style="background-color: white; margin: 3px;">
-			<a href="/projects/create" class="btn btn-success btn-sm pull-right">Create New</a>
+		<div class="row col-sm-12 col-md-12 col-lg-12" style="background-color: white; margin: 3px;">
+			<a href="/projects/create" class="btn btn-success btn-sm pull-right">Add Project</a>
+			<br>
+
+			<div class="row container-fluid">
+				<form method="post" action="{{ route('comments.store') }}">
+					{{ csrf_field() }}
+
+					<h1>Comment</h1>
+
+					<input type="hidden" name="commentable" value="Project" >
+					<input type="hidden" name="commentable_id" value="{{$project->id}}" >
+
+					<div class="form-group">
+						<label for="comment-body">Comment</span></label>
+						<textarea
+							name="comment"
+							id="comment-body"
+							rows="3"
+							spellcheck="false"
+							style="resize: vertical"
+							class="form-control autosize-target text-left"
+							placeholder="Enter your comments">
+						</textarea> 
+					</div>
+
+					<div class="form-group">
+						<label for="comment-url">Proof of Work done (Url/Photo)</span></label>
+						<textarea
+							name="url"
+							id="comment-url"
+							rows="2"
+							spellcheck="false"
+							style="resize: vertical"
+							class="form-control autosize-target text-left"
+							placeholder="Enter the Proof of work done">
+						</textarea> 
+					</div>
+
+					
+
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary" value="Add comment">
+					</div>
+				</form>	
+			</div>
+			
+
 			{{-- @foreach($project->projects as $project)
 			<div class="col-lg-4">
 				<h2>{{ $project->name }}</h2>
