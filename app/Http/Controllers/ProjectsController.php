@@ -74,7 +74,9 @@ class ProjectsController extends Controller
     public function show(Project $project)
     {
         $project = Project::find($project->id); 
-        return view('projects.show', ['project' => $project]);
+        $comments = $project->comments;
+        
+        return view('projects.show', ['project' => $project, 'comments' => $comments]);
     }
 
     /**
