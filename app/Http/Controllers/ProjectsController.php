@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Company;
+use App\Models\User;
+use App\Models\ProjectUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +25,34 @@ class ProjectsController extends Controller
         }
 
         return view('auth.login');
-        
+    }
+
+    public function adduser(Request $request) {
+        // add to project
+        $project = Project::find($request->input('project_id'));
+
+        if (Auth::user()->id === $project->user_id) {
+            $user = User::where('email', $request->input('email'))->first();
+
+            $projectUser = projectUser::where('user_id', $user->id)
+                                        ->where('project_id', $project->id)
+                                        ->first();
+
+            // check if user is already added to project
+            if ($projectUser) {
+                return redirect()->route('projects.show', ['project_id' => $project->id])->with('errors', $request->input('email'). ' is already a Member of this Project');
+            }
+
+            if ($user && $project) {
+                $project->users()->attach($user->id);
+
+                return redirect()->route('projects.show', ['project_id' => $project->id])->with('success', $request->input('email'). ' was Successfully added to '. $project->name . ' Project');
+            }
+
+            return redirect()->route('projects.show', ['project_id' => $project->id])->with('errors', 'Error adding User to Project. Try again');
+        }
+
+        return redirect()->route('projects.show', ['project_id' => $project->id])->with('errors', 'Sorry, you do not have permission to add User to this Project');
     }
 
     /**
