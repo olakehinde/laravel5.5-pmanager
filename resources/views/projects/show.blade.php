@@ -9,7 +9,7 @@
 		</div>
 
 		@include('partials.comments')
-		
+
 		<div class="row col-sm-12 col-md-12 col-lg-12" style="background-color: white; margin: 3px;">
 			<!-- <a href="/projects/create" class="btn btn-success btn-sm pull-right">Add Project</a> -->
 
@@ -94,6 +94,34 @@
 			</ol>
 		</div>
 
+		<!-- add users to project -->
+		<hr>
+		<h4>Add Team Member</h4>
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<form id="add-user" action="{{ route('projects.adduser', ['project' => $project->id]) }}" method="post">
+					<div class="input-group">
+						<input type="text" class="form-control" name="email" placeholder="Enter Email">
+						<input type="hidden" name="project_id" value="{{ $project->id }}">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="submit">Add</button>
+						</span>
+					{{ csrf_field() }}
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<br>
+
+		<h4>Team Members</h4>
+		<ol class="list-unstyled">
+			@foreach($project->users as $user)
+			<li><a href="#">{{ $user->email }}</a></li>
+			@endforeach
+		</ol>
+		
+
 		<!-- <div class="sidebar-module">
 			<h4>Members</h4>
 			<ol class="list-unstyled">
@@ -121,3 +149,4 @@
 		</div> -->
 	</div>
 @endsection
+
