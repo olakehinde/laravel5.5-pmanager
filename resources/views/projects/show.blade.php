@@ -9,16 +9,13 @@
 		</div>
 
 		<div class="row col-sm-12 col-md-12 col-lg-12" style="background-color: white; margin: 3px;">
-			<a href="/projects/create" class="btn btn-success btn-sm pull-right">Add Project</a>
-			<br>
+			<!-- <a href="/projects/create" class="btn btn-success btn-sm pull-right">Add Project</a> -->
 
 			<div class="row container-fluid">
 				<form method="post" action="{{ route('comments.store') }}">
 					{{ csrf_field() }}
 
-					<h1>Comment</h1>
-
-					<input type="hidden" name="commentable_type" value="Project" >
+					<input type="hidden" name="commentable_type" value="App\Models\Project" >
 					<input type="hidden" name="commentable_id" value="{{$project->id}}" >
 
 					<div class="form-group">
@@ -56,13 +53,44 @@
 			</div>
 			
 
-			{{-- @foreach($project->projects as $project)
+			@foreach($project->comments as $comment)
 			<div class="col-lg-4">
-				<h2>{{ $project->name }}</h2>
-				<p class="text-danger">{{ $project->description }}</p>
+				<p>{{ $comment->body }}</p>
+				<p class="text-danger">{{ $comment->url }}</p>
 				<p><a href="/projects/{{ $project->id }}" class=" btn btn-primary">View Details</a></p>
 			</div>
-			@endforeach --}}
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<span class="glyphicon glyphicon-comment"></span>
+								Recent comment
+							</h3>
+						</div>
+						<div class="panel-body">
+							<ul class="media-list">
+								@foreach($project->comments as $comment)
+								<li class="media">
+									<div class="media-left">
+										<img src="#" class="img-circle">
+									</div>
+									<div class="media-body">
+										<h4 class="media-heading"><a href="users/{{ $comment->user->id}}">{{ $comment->user->first_name }}{{ $comment->user->last_name }} - {{ $comment->user->email }}</a> <br>
+											<small>Commented on {{ $comment->created_at}}</small>
+										</h4>
+										<p>{{ $comment->body }}</p>
+										Proof: <p>{{ $comment->url}}</p>
+									</div>
+								</li>
+								@endforeach
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			@endforeach
 		</div>
 	</div>
 
