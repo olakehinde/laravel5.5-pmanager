@@ -14,7 +14,7 @@ class Project extends Model
     	'days'
     ];
 
-	public function user() {
+	public function users() {
 		return $this->belongsToMany('App\Models\User');
 	}    
 
