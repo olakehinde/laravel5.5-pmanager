@@ -52,45 +52,7 @@
 				</form>	
 			</div>
 			
-
-			@foreach($project->comments as $comment)
-			<div class="col-lg-4">
-				<p>{{ $comment->body }}</p>
-				<p class="text-danger">{{ $comment->url }}</p>
-				<p><a href="/projects/{{ $project->id }}" class=" btn btn-primary">View Details</a></p>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								<span class="glyphicon glyphicon-comment"></span>
-								Recent comment
-							</h3>
-						</div>
-						<div class="panel-body">
-							<ul class="media-list">
-								@foreach($project->comments as $comment)
-								<li class="media">
-									<div class="media-left">
-										<img src="#" class="img-circle">
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading"><a href="users/{{ $comment->user->id}}">{{ $comment->user->first_name }}{{ $comment->user->last_name }} - {{ $comment->user->email }}</a> <br>
-											<small>Commented on {{ $comment->created_at}}</small>
-										</h4>
-										<p>{{ $comment->body }}</p>
-										Proof: <p>{{ $comment->url}}</p>
-									</div>
-								</li>
-								@endforeach
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			@endforeach
+			@include('partials.comments')
 		</div>
 	</div>
 
