@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/fa-css/all.min.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('fontawesome/webfonts/all.min.css') }}" rel="stylesheet"> -->
 
     <!-- Font Awesome -->
     <script type="text/javascript" src="https://use.fontawesome.com/874dbadbd7.js"></script>
