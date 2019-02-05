@@ -54,9 +54,9 @@
 
 	<div class="col-lg-3 col-md-3 col-sm-3 pull-right blog-sidebar">
 		<div class="sidebar-module">
-			<a href="/projects" class="btn btn-info"><i class="fa fa-eye"></i> View My Projects</a>
+			<a href="/projects" class="btn btn-info"><i class="fa fa-list"></i> View My Projects</a>
 			<br><hr>
-			<h4>Manage Project</h4>
+			<h4 style="padding-bottom: 5px;">Manage Project</h4>
 			<ol class="list-unstyled">
 				<li style="padding-bottom: 3px"><a href="/projects/{{ $project->id }}/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a></li>
 
