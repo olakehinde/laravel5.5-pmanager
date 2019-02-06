@@ -77,14 +77,10 @@
 
 				<li style="padding-bottom: 3px"><a href="/projects/create" class="btn btn-success"><i class="fa fa-plus"></i> Add new Project</a></li>
 
-
-
 				<form id="delete-form" action="{{ route('projects.destroy', ['project' => $project->id]) }}" method="post" style="display: none;">
 					<input type="hidden" name="_method" value="delete">
 					{{ csrf_field() }}
 				</form>
-
-				<!-- <li style="padding-bottom: 3px"><a href="#" class="btn btn-success">Add new Member</a></li> -->
 			</ol>
 		</div>
 
