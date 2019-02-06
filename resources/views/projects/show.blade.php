@@ -3,8 +3,8 @@
 @section('content')
 	<div class="col-md-9 col-lg-9 col-sm-9 pull-left">
 		<div class="well-lg">
-			<h1>{{$project->name}}</h1>
-			<p class="lead">{{$project->description}}</p>
+			<h1 class="text-white">{{$project->name}}</h1>
+			<p class="lead text-white">{{$project->description}}</p>
 		</div>
 
 		@include('partials.comments')
@@ -56,7 +56,7 @@
 		<div class="sidebar-module">
 			<a href="/projects" class="btn btn-info"><i class="fa fa-list"></i> View My Projects</a>
 			<br><hr>
-			<h4 style="padding-bottom: 5px;">Manage Project</h4>
+			<h4 style="padding-bottom: 5px;" class="text-white">Manage Project</h4>
 			<ol class="list-unstyled">
 				<li style="padding-bottom: 3px"><a href="/projects/{{ $project->id }}/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a></li>
 
@@ -86,7 +86,7 @@
 
 		<!-- add users to project -->
 		<hr>
-		<h4><i class="fa fa-plus"></i> Add Team Member</h4>
+		<h4 class="text-white"><i class="fa fa-plus"></i> Add Team Member</h4>
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<form id="add-user" action="{{ route('projects.adduser', ['project' => $project->id]) }}" method="post">
@@ -104,7 +104,7 @@
 
 		<br>
 
-		<h4>Team Members</h4>
+		<h4 class="text-white">Team Members</h4>
 		<ol class="list-unstyled">
 			@foreach($project->users as $user)
 				<li><a href="#">{{ $user->email }}</a></li>
