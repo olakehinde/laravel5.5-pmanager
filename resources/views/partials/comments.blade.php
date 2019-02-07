@@ -8,7 +8,7 @@
 				</h3>
 			</div>
 			<div class="panel-body">
-				@if(isset($comments))
+				@if(!isset($comments))
 					<h2>No comments yet.</h2>
 				@endif
 
