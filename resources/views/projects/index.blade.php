@@ -2,7 +2,7 @@
 @section('content')
     <div class="container mt-5">
 		<div class="row pb-1">
-			<div class="col">My Projects</div>
+			<div class="col text-white"><i class="fa fa-list"></i> My Projects</div>
 			<div class="col"><a class="btn btn-success pull-right btn-sm" href="/projects/create"><i class="fa fa-plus"></i> Add new Project</a></div>
 		</div>
         @if(!$projects)
