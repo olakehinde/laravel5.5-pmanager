@@ -7,13 +7,21 @@
 			<p class="lead">{{$company->description}}</p>
 		</div>
 
-		<div class="row" style="background-color: white; margin: 3px;">
-			<a href="/projects/create/{{$company->id}}" class="btn btn-success btn-sm pull-right">Create Project</a>
+		<div class="row" style="margin: 3px;">
+			<div class="col-md-2">
+				<a href="/projects/create/{{$company->id}}" class="btn btn-success btn-sm text-center"><i class="fa fa-plus"></i> Create Project</a>
+			</div>
+			
+
+			@if(count($company->projects) < 1)
+				<p class="text-white mx-5">{{$company->name}} has no Project yet.</p>
+			@endif
+
 			@foreach($company->projects as $project)
-			<div class="col-lg-4">
-				<h2>{{ $project->name }}</h2>
-				<p class="text-danger">{{ $project->description }}</p>
-				<p><a href="/projects/{{ $project->id }}" class=" btn btn-primary">View Details</a></p>
+			<div class="col-md-10">
+				<h2 class="text-white">Project title: {{ $project->name }}</h2>
+				<p class="text-white">Description: {{ $project->description }}</p>
+				<a href="/projects/{{ $project->id }}" class=" btn btn-primary btn-sm pull-right"><i class="fa fa-eye"></i> View Details</a>
 			</div>
 			@endforeach
 		</div>
@@ -21,11 +29,11 @@
 
 	<div class="col-lg-3 col-md-3 col-sm-3 pull-right blog-sidebar">
 		<div class="sidebar-module">
-			<a href="/companies" class="btn btn-info">View Companies</a>
+			<a href="/companies" class="btn btn-info"><i class="fa fa-eye"></i> View Companies</a>
 			<br><hr>
-			<h4>Manage Project</h4>
+			<h4 style="margin-bottom: 5px;"><i class="fa fa-list"></i> Manage Project</h4>
 			<ol class="list-unstyled">
-				<li style="padding-bottom: 3px"><a href="/companies/{{ $company->id }}/edit" class="btn btn-primary">Edit</a></li>
+				<li style="padding-bottom: 3px"><a href="/companies/{{ $company->id }}/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a></li>
 
 				<li style="padding-bottom: 3px">
 					<a href="#" class="btn btn-danger"
@@ -36,12 +44,12 @@
 							document.getElementById('delete-form').submit();
 						}
 						">
-						Delete
+						<i class="fa fa-trash"></i> Delete
 					</a>
 				</li>
 
-				<li style="padding-bottom: 3px"><a href="/projects/create/{{ $company->id }}" class="btn btn-success">Add new Project</a></li>
-				<li style="padding-bottom: 3px"><a href="/companies/create" class="btn btn-success">Add new Company</a></li>
+				<li style="padding-bottom: 3px"><a href="/projects/create/{{ $company->id }}" class="btn btn-success"><i class="fa fa-plus"></i> Add new Project</a></li>
+				<li style="padding-bottom: 3px"><a href="/companies/create" class="btn btn-success"><i class="fa fa-plus"></i> Add new Company</a></li>
 
 
 
