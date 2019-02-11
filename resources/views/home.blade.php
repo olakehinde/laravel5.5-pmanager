@@ -10,8 +10,8 @@
                 <p>Your Projects are now closer to you more than ever before. You can now manage all your Projects in one place</p>
                 <div class="content3">
                     <ul>
-                        <li><a class="" href="#">Register a Company</a></li>
-                        <li><a class="read" href="#">Create Project</a></li>
+                        <li><a href="{{ route('companies.create') }}">Register a Company</a></li>
+                        <li><a class="read" href="{{ route('projects.create')}}">Create Project</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,13 +27,13 @@
                 <div class="clear"> </div>
             @else
                 <div class="register-in">
-                    <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="{{ route('companies.index') }}"><i class="fa fa-building" aria-hidde n="true"></i> My Companies</a>
+                    <a class="book"href="{{ route('companies.index') }}"><i class="fa fa-building" aria-hidde n="true"></i> My Companies</a>
                 </div>
                 <div class="register-in middle">
-                    <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="{{ route('projects.index') }}"><i class="fa fa-briefcase" aria-hidden="true"></i> Projects</a>
+                    <a class="book" href="{{ route('projects.index') }}"><i class="fa fa-briefcase" aria-hidden="true"></i> Projects</a>
                 </div>
                 <div class="register-in">
-                    <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="{{ route('tasks.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> Tasks</a>
+                    <a class="book" href="{{ route('tasks.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> Tasks</a>
                 </div> 
 
                 <!-- check if signed-in user is an admin -->
@@ -44,11 +44,11 @@
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="{{ route('users.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> All Users</a></li>
-                            <li><a href="{{ route('companies.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> All Companies</a></li>
-                            <li><a href="{{ route('projects.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> All Projects</a></li>
-                            <li><a href="{{ route('tasks.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> All Tasks</a></li>
-                            <li><a href="{{ route('roles.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> All Roles</a></li>
+                            <li><a href="{{ route('users.index') }}"><i class="fa fa-user" aria-hidden="true"></i> Users</a></li>
+                            <li><a href="{{ route('companies.index') }}"><i class="fa fa-building" aria-hidden="true"></i> Companies</a></li>
+                            <li><a href="{{ route('projects.index') }}"><i class="fa fa-briefcase" aria-hidden="true"></i> Projects</a></li>
+                            <li><a href="{{ route('tasks.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> Tasks</a></li>
+                            <li><a href="{{ route('roles.index') }}"><i class="fa fa-role" aria-hidden="true"></i> Roles</a></li>
                         </ul>
                     </li>
                 @endif
