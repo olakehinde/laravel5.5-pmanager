@@ -2,15 +2,15 @@
 
 @section('content')
 	<div class="row col-md-9 col-lg-9 col-sm-9 pull-left">
-		<div class="row col-sm-12 col-md-12 col-lg-12" style="background-color: white; margin: 3px;">
+		<div class="row col-sm-12 col-md-12 col-lg-12">
 
-			<form method="post" action="{{ route('companies.update', [$company->id]) }}">
+			<form method="post" action="{{ route('companies.update', [$company->id]) }}" class="col-12">
 				{{ csrf_field() }}
 
 				<input type="hidden" name="_method" value="put">
 
 				<div class="form-group">
-					<label for="company-name">Name <span class="required">*</span></span></label>
+					<label for="company-name" class="text-white" style="margin-bottom: 3px;">Name <span class="required">*</span></span></label>
 					<input 
 						type="text" 
 						name="name" 
@@ -24,7 +24,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="company-description">Description</span></label>
+					<label for="company-description" class="text-white" style="margin-bottom: 3px;">Description</span></label>
 					<textarea
 						name="description"
 						id="company-description"
@@ -46,13 +46,10 @@
 
 	<div class="col-lg-3 col-md-3 col-sm-3 pull-right blog-sidebar">
 		<div class="sidebar-module">
-			<h4>Action</h4>
 			<ol class="list-unstyled">
-				<li style="padding-bottom: 3px"><a href="/companies/{{ $company->id }}" class="btn btn-primary">View company</a></li>
-				<li style="padding-bottom: 3px"><a href="/companies" class="btn btn-danger">View all Companies</a></li>
-				
+				<li style="padding-bottom: 3px"><a href="/companies/{{ $company->id }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-left"></i> Back</a></li>
+				<li style="padding-bottom: 3px"><a href="/companies" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View all Companies</a></li>
 			</ol>
 		</div>
-
 	</div>
 @endsection 

@@ -2,13 +2,13 @@
 
 @section('content')
 	<div class="row col-md-9 col-lg-9 col-sm-9 pull-left">
-		<div class="row col-sm-12 col-md-12 col-lg-12" style="background-color: white; margin: 3px;">
+		<div class="row col-sm-12 col-md-12 col-lg-12" >
 
-			<form method="post" action="{{ route('companies.store') }}">
+			<form method="post" action="{{ route('companies.store') }}" class="col-lg-12">
 				{{ csrf_field() }}
 
 				<div class="form-group">
-					<label for="company-name">Name <span class="required">*</span></span></label>
+					<label for="company-name" style="color: white; padding-bottom: 3px;">Name <span class="required">*</span></span></label>
 					<input 
 						type="text" 
 						name="name" 
@@ -21,14 +21,14 @@
 				</div>
 
 				<div class="form-group">
-					<label for="company-description">Description</span></label>
+					<label for="company-description" style="color: white; padding-bottom: 3px;">Description</span></label>
 					<textarea
 						name="description"
 						id="company-description"
 						rows="5"
 						spellcheck="false"
 						style="resize: vertical"
-						class="form-control autosize-target text-left"
+						class="form-control autosize-target"
 						placeholder="Describe the company">
 					</textarea> 
 				</div>
@@ -42,10 +42,8 @@
 
 	<div class="col-lg-3 col-md-3 col-sm-3 pull-right blog-sidebar">
 		<div class="sidebar-module">
-			<h4>Action</h4>
 			<ol class="list-unstyled">
-				<li style="padding-bottom: 3px"><a href="/companies.show" class="btn btn-primary">My Company</a></li>
-				<li style="padding-bottom: 3px"><a href="/companies" class="btn btn-danger">View all Companies</a></li>
+				<li style="padding-bottom: 3px"><a href="/companies" class="btn btn-primary"><i class="fa fa-list"></i> View all Companies</a></li>
 				
 			</ol>
 		</div>
